@@ -1,0 +1,29 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.container {
+  max-width: 1176px;
+  margin: auto;
+  width: 70%;
+}
+
+.container>ul {
+  text-align: center;
+
+  & li {
+    margin: 0.5rem;
+    list-style: none;
+  }
+}
+
+.line-through {
+  text-decoration: line-through red;
+}

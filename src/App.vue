@@ -50,9 +50,9 @@ export default {
 <template>
   <div class="container">
     <h1>To Do List</h1>
-    <ul v-if="toDoList > 0">
-      <li v-for="(item, index) in toDoList">
-        <span :class="item.done ? 'line-through' : ''">{{ item.text }}</span>
+    <ul v-if="toDoList.length > 0">
+      <li v-for="(item, index) in   toDoList  ">
+        <span :class="{ 'line-through': item.done }">{{ item.text }}</span>
         <span>
           <i class="fa-solid fa-square-xmark" @click="remove(index)"></i>
         </span>

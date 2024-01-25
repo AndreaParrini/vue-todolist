@@ -35,7 +35,11 @@ export default {
   },
   methods: {
     remove(index) {
-      this.toDoList[index].done = true;
+      if (this.toDoList[index].done) {
+        this.toDoList[index].done = false;
+      } else {
+        this.toDoList[index].done = true;
+      }
     }
   }
 }
@@ -46,8 +50,8 @@ export default {
   <div class="container">
     <h1>To Do List</h1>
     <ul>
-      <li v-for="(item, index) in toDoList" :class="item.done ? 'line-through' : ''">
-        {{ item.text }}
+      <li v-for="(item, index) in toDoList">
+        <span :class="item.done ? 'line-through' : ''">{{ item.text }}</span>
         <span>
           <i class="fa-solid fa-square-xmark" @click="remove(index)"></i>
         </span>

@@ -19,7 +19,7 @@ export default {
         },
         {
           text: "Rifare il letto",
-          done: false,
+          done: true,
         },
         {
           text: "Fare l'esercizio",
@@ -27,7 +27,7 @@ export default {
         },
         {
           text: "Fare la spesa",
-          done: false,
+          done: true,
         },
       ],
 
@@ -35,11 +35,12 @@ export default {
   },
   methods: {
     remove(index) {
-      if (this.toDoList[index].done) {
+      this.toDoList.splice(index, 1)
+      /* if (this.toDoList[index].done) {
         this.toDoList[index].done = false;
       } else {
         this.toDoList[index].done = true;
-      }
+      } */
     }
   }
 }

@@ -50,7 +50,7 @@ export default {
 <template>
   <div class="container">
     <h1>To Do List</h1>
-    <ul>
+    <ul v-if="toDoList > 0">
       <li v-for="(item, index) in toDoList">
         <span :class="item.done ? 'line-through' : ''">{{ item.text }}</span>
         <span>
@@ -58,6 +58,8 @@ export default {
         </span>
       </li>
     </ul>
+
+    <p v-else>Niente da fare, goditi la giornata</p>
   </div>
 </template>
 

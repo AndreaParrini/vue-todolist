@@ -72,10 +72,10 @@ export default {
           Aggiungi
         </button>
       </div>
-      <div v-if="errorMessage">
-        <span class="text-danger text-center fs-5">
+      <div v-if="errorMessage" class="text-center">
+        <span class="text-danger fs-5">
           <i class="fa-solid fa-triangle-exclamation"></i>
-          Devi inserire ameno 5 caratteri
+          Devi inserire almeno 5 caratteri
           <i class="fa-solid fa-triangle-exclamation"></i>
         </span>
       </div>

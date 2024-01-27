@@ -56,7 +56,7 @@ export default {
         this.errorMessage = true;
       }
 
-    }
+    },
   }
 }
 
@@ -64,30 +64,43 @@ export default {
 
 <template>
   <div class="container">
-    <h1>To Do List</h1>
-    <div>
-      <input type="text" v-model="newItem" @keyup.enter="addItem(newItem)">
-      <button class=" btn button" @click="addItem(newItem)">
-        Aggiungi
-      </button>
-    </div>
-    <div v-if="errorMessage">
-      <span class="text-danger">
-        <i class="fa-solid fa-triangle-exclamation"></i>
-        Devi inserire ameno 5 caratteri
-        <i class="fa-solid fa-triangle-exclamation"></i>
-      </span>
-    </div>
-    <ul v-if="toDoList.length > 0">
-      <li v-for="( item, index ) in    toDoList   ">
-        <span :class="{ 'line-through': item.done }">{{ item.text }}</span>
-        <span>
-          <i class="fa-solid fa-square-xmark" @click="remove(index)"></i>
+    <div class="card justify-content-center mt-3">
+      <h1>To Do List</h1>
+      <div class="input-group input-group-md mb-3 justify-content-center">
+        <input type="text" v-model="newItem" @keyup.enter="addItem(newItem)">
+        <button class=" btn btn-dark" @click="addItem(newItem)">
+          Aggiungi
+        </button>
+      </div>
+      <div v-if="errorMessage">
+        <span class="text-danger text-center fs-5">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          Devi inserire ameno 5 caratteri
+          <i class="fa-solid fa-triangle-exclamation"></i>
         </span>
-      </li>
-    </ul>
+      </div>
 
-    <p v-else>Niente da fare, goditi la giornata</p>
+      <div class="card-body m-auto w-75">
+        <ul v-if="toDoList.length > 0" class="list-group">
+          <li v-for="( item, index ) in    toDoList   " class="list-group-item d-flex justify-content-between fs-5">
+            <span :class="{ 'line-through': item.done }" @click="item.done = !item.done">{{ item.text
+            }}</span>
+            <span>
+              <i class="fa-solid fa-square-xmark" @click="remove(index)"></i>
+            </span>
+          </li>
+        </ul>
+        <p v-else class="text-center fs-5">
+          <i class="fa-solid fa-face-grin-beam"></i>
+          Complimenti, hai completato tutte le tue cose da fare.
+          Goditi la giornata.
+          <i class="fa-solid fa-sun"></i>
+        </p>
+      </div>
+
+    </div>
+
+
   </div>
 </template>
 

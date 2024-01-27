@@ -9,29 +9,6 @@ h1 {
   margin: 2rem 0;
 }
 
-.container {
-  max-width: 1176px;
-  margin: auto;
-  width: 70%;
-}
-
-.container>ul {
-  text-align: center;
-
-  & li {
-    margin: 0.5rem;
-    list-style: none;
-  }
-
-  & span>i {
-    margin-left: 5px;
-  }
-}
-
 .line-through {
   text-decoration: line-through 1.5px rgba(255, 0, 0, 0.677);
-}
-
-p {
-  text-align: center;
 }

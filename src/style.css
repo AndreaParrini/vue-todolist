@@ -12,3 +12,7 @@ h1 {
 .line-through {
   text-decoration: line-through 1.5px rgba(255, 0, 0, 0.677);
 }
+
+span:hover {
+  cursor: pointer;
+}

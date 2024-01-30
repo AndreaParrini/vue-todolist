@@ -32,17 +32,13 @@ export default {
           done: true,
         },
       ],
-
+      toDoCancelled: [],
     }
   },
   methods: {
-    remove(index) {
-      this.toDoList.splice(index, 1)
-      /* if (this.toDoList[index].done) {
-        this.toDoList[index].done = false;
-      } else {
-        this.toDoList[index].done = true;
-      } */
+    remove(item, index) {
+      this.toDoList.splice(index, 1);
+      this.toDoCancelled.push(item);
     },
     addItem(newItem) {
       if (newItem.length > 4) {
@@ -57,6 +53,10 @@ export default {
       }
 
     },
+    deleteCancelled(item, index) {
+      this.toDoCancelled.splice(index, 1);
+      this.toDoList.push(item);
+    }
   }
 }
 
@@ -82,11 +82,12 @@ export default {
 
       <div class="card-body m-auto w-75">
         <ul v-if="toDoList.length > 0" class="list-group">
-          <li v-for="( item, index ) in    toDoList   " class="list-group-item d-flex justify-content-between fs-5">
+          <li v-for="( item, index ) in    toDoList   "
+            class="list-group-item d-flex justify-content-between fs-5 border border-black">
             <span :class="{ 'line-through': item.done }" @click="item.done = !item.done">{{ item.text
             }}</span>
             <span>
-              <i class="fa-solid fa-square-xmark" @click="remove(index)"></i>
+              <i class="fa-solid fa-square-xmark" @click="remove(item, index)"></i>
             </span>
           </li>
         </ul>
@@ -100,6 +101,28 @@ export default {
 
     </div>
 
+    <div class="card justify-content-center mt-3">
+      <h1>To Do Cancelled</h1>
+
+      <div class="card-body m-auto w-75">
+        <ul v-if="toDoCancelled.length > 0" class="list-group">
+          <li v-for="(item, index) in toDoCancelled   "
+            class="list-group-item d-flex justify-content-between fs-5 border border-danger">
+            <span class="text-danger">{{ item.text
+            }}</span>
+            <span>
+              <i class="fa-solid fa-trash-can-arrow-up" @click="deleteCancelled(item, index)"></i>
+            </span>
+          </li>
+        </ul>
+        <p v-else class="text-center fs-5">
+          <i class="fa-solid fa-face-grin-beam"></i>
+          Non hai nessuna To Do cancellata!
+          <i class="fa-solid fa-face-grin-beam"></i>
+        </p>
+      </div>
+
+    </div>
 
   </div>
 </template>
